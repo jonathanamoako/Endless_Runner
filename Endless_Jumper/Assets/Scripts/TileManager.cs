@@ -32,7 +32,8 @@ public class TileManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        
+
+        CreateTiles(20);
 
 	for (int i = 0; i < 10; i++)
         {
@@ -48,13 +49,47 @@ public class TileManager : MonoBehaviour {
 
     public void CreateTiles(int amount)
     {
-        for
+        for (int i = 0; i < amount; i++)
+        {
+            leftTiles.Push(Instantiate(tilePrefabs[0]));
+            topTiles.Push(Instantiate(tilePrefabs[1]));
+            topTiles.Peek().SetActive(false);
+            leftTiles.Peek().SetActive(false);
+
+        }
+
+        for (int i = 0; i < amount; i++)
+        {
+
+        }
     }
 
     public void SpawnTiles ()
     {
+
+        if(leftTiles.Count == 0 || topTiles.Count == 0)
+        {
+            CreateTiles(10);
+        }
+
         int randomIndex = Random.Range(0, 2);
 
-      currentTile = (GameObject) Instantiate(tilePrefabs[randomIndex], currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position, Quaternion.identity);
+        if (randomIndex == 0)
+        {
+            GameObject tmp = leftTiles.Pop();
+            tmp.SetActive(true);
+            tmp.transform.position = currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position;
+            currentTile = tmp;
+
+        }
+        else if(randomIndex == 1)
+        {
+            GameObject tmp = topTiles.Pop();
+            tmp.SetActive(true);
+            tmp.transform.position = currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position;
+            currentTile = tmp;
+        }
+
+      //currentTile = (GameObject) Instantiate(tilePrefabs[randomIndex], currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position, Quaternion.identity);
     }
 }
