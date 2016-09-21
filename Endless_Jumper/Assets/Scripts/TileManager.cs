@@ -32,10 +32,7 @@ public class TileManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        GameObject second = null;
-        leftTiles.Push(currentTile);
-        leftTiles.Push(second);
-        leftTiles.Pop();
+        
 
 	for (int i = 0; i < 10; i++)
         {
@@ -48,6 +45,11 @@ public class TileManager : MonoBehaviour {
     {
 	
 	}
+
+    public void CreateTiles(int amount)
+    {
+        for
+    }
 
     public void SpawnTiles ()
     {
