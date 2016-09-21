@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class TileManager : MonoBehaviour {
 
@@ -9,6 +11,10 @@ public class TileManager : MonoBehaviour {
     public GameObject currentTile;
 
     private static TileManager instance;
+    private Stack<GameObject> leftTiles = new Stack<GameObject>();
+    private Stack<GameObject> topTiles = new Stack<GameObject>();
+
+
 
     public static TileManager Instance
     {
@@ -26,6 +32,11 @@ public class TileManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        GameObject second = null;
+        leftTiles.Push(currentTile);
+        leftTiles.Push(second);
+        leftTiles.Pop();
+
 	for (int i = 0; i < 10; i++)
         {
             SpawnTiles();
