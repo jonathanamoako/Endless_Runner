@@ -5,14 +5,15 @@ using System.Collections.Generic;
 
 public class TileManager : MonoBehaviour {
 
-    public GameObject leftTilePrefab;
-    public GameObject topTilePrefab;
     public GameObject[] tilePrefabs;
     public GameObject currentTile;
 
     private static TileManager instance;
+
     private Stack<GameObject> leftTiles = new Stack<GameObject>();
+
     private Stack<GameObject> topTiles = new Stack<GameObject>();
+
 
 
 
@@ -27,6 +28,28 @@ public class TileManager : MonoBehaviour {
             return instance;
         }
     }
+
+    public Stack<GameObject> LeftTiles
+    {
+        get{ return leftTiles;}
+
+        set{leftTiles = value;}
+    }
+
+    public Stack<GameObject> TopTiles
+    {
+        get
+        {
+            return topTiles;
+        }
+
+        set
+        {
+            topTiles = value;
+        }
+    }
+
+
 
 
     // Use this for initialization
@@ -51,10 +74,12 @@ public class TileManager : MonoBehaviour {
     {
         for (int i = 0; i < amount; i++)
         {
-            leftTiles.Push(Instantiate(tilePrefabs[0]));
+            LeftTiles.Push(Instantiate(tilePrefabs[0]));
             topTiles.Push(Instantiate(tilePrefabs[1]));
             topTiles.Peek().SetActive(false);
-            leftTiles.Peek().SetActive(false);
+            topTiles.Peek().name = "TopTile";
+            LeftTiles.Peek().SetActive(false);
+            LeftTiles.Peek().name = "LeftTile";
 
         }
 
@@ -67,7 +92,7 @@ public class TileManager : MonoBehaviour {
     public void SpawnTiles ()
     {
 
-        if(leftTiles.Count == 0 || topTiles.Count == 0)
+        if(LeftTiles.Count == 0 || topTiles.Count == 0)
         {
             CreateTiles(10);
         }
@@ -76,7 +101,7 @@ public class TileManager : MonoBehaviour {
 
         if (randomIndex == 0)
         {
-            GameObject tmp = leftTiles.Pop();
+            GameObject tmp = LeftTiles.Pop();
             tmp.SetActive(true);
             tmp.transform.position = currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position;
             currentTile = tmp;
