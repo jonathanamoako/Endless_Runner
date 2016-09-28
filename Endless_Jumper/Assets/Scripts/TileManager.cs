@@ -115,6 +115,8 @@ public class TileManager : MonoBehaviour {
             currentTile = tmp;
         }
 
+
+
       //currentTile = (GameObject) Instantiate(tilePrefabs[randomIndex], currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position, Quaternion.identity);
     }
 }
