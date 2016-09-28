@@ -13,6 +13,7 @@ public class MenuScript : MonoBehaviour {
         quitMenu = quitMenu.GetComponent<Canvas>();
         startText = startText.GetComponent<Button>();
         exitText = exitText.GetComponent<Button>();
+        quitMenu.enabled = false;
 	}
 	
 	    public void ExitPress()
