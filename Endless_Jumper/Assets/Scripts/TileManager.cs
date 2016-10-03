@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 
 public class TileManager : MonoBehaviour {
@@ -115,8 +116,20 @@ public class TileManager : MonoBehaviour {
             currentTile = tmp;
         }
 
+        int spawnPickup = Random.Range(0, 10);
+
+        if (spawnPickup == 0)
+        {
+            currentTile.transform.GetChild(1).gameObject.SetActive(true);
+        }
+
 
 
       //currentTile = (GameObject) Instantiate(tilePrefabs[randomIndex], currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position, Quaternion.identity);
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }
