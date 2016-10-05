@@ -105,6 +105,7 @@ public class TileManager : MonoBehaviour {
             GameObject tmp = LeftTiles.Pop();
             tmp.SetActive(true);
             tmp.transform.position = currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position;
+            tmp.transform.rotation = Quaternion.Euler(0, 0, 0);
             currentTile = tmp;
 
         }
@@ -113,6 +114,7 @@ public class TileManager : MonoBehaviour {
             GameObject tmp = topTiles.Pop();
             tmp.SetActive(true);
             tmp.transform.position = currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position;
+            tmp.transform.rotation = Quaternion.Euler(0, 0, 0);
             currentTile = tmp;
         }
 

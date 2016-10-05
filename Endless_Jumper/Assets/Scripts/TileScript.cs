@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TileScript : MonoBehaviour {
 
-    private float fallDealy = 0.5f;
+    private float fallDelay = 0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,13 +21,12 @@ public class TileScript : MonoBehaviour {
         {
             TileManager.Instance.SpawnTiles();
             StartCoroutine(FallDown());
-            Debug.Log("Spawn Tile");
         }
 
     }
 IEnumerator FallDown()
     {
-        yield return new WaitForSeconds(fallDealy);
+        yield return new WaitForSeconds(fallDelay);
         GetComponent<Rigidbody>().isKinematic = false;
         yield return new WaitForSeconds(2);
         switch (gameObject.name)
