@@ -5,19 +5,40 @@ using System.IO.Ports;
 
 
 public class Arduino : MonoBehaviour {
-   
-
-	// Use this for initialization
-	void Start () {
-        stream = new SerialPort("COM4", 9600);
-        stream.ReadTimeout = 50;
-        stream.Open();
+    SerialPort sp = new SerialPort("COM5", 9600);
 
 
+
+    void Start()
+    {
+        sp.Open();
+        sp.ReadTimeout = 1;
     }
 
     // Update is called once per frame
-    void Update () {
-	
-	}
-}
+    void Update()
+    {
+        var str = sp.ReadLine(); 
+
+        try
+        {
+            // print(sp.ReadLine());
+            Debug.Log(str);
+        }
+        catch (System.Exception)
+        {
+
+        }
+
+        //var str = sp.ReadLine();
+       
+      //  strArray : string[];
+       // strArray = str.Split(",");
+
+
+
+
+    } }
+ 
+
+
