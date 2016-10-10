@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class MySQL : MonoBehaviour
@@ -37,4 +37,4 @@ public class MySQL : MonoBehaviour
         }
 
     }
-}
+}*/
