@@ -8,7 +8,7 @@ public class MySQL : MonoBehaviour
 
 	void Start()
 {
-    StartCoroutine(HandleEnterScore(123331, 12));
+    //StartCoroutine(HandleEnterScore(123331, 12));
     //StartCoroutine(HandleGetScores());
 }
 

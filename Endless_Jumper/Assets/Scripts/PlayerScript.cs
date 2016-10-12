@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour {
 
-    public float speed;
+    private int speed = 15;
 
     private Vector3 dir;
 
-    public GameObject ps;
+    [SerializeField]
+    private GameObject ps;
 
     private bool isDead;
 
-    public GameObject resetBtn;
+    [SerializeField]
+    private GameObject resetBtn;
 
-    private int score = 0;
-
-    public Text scoreText;
 
 	// Use this for initialization
 	void Start ()
@@ -31,8 +30,7 @@ public class PlayerScript : MonoBehaviour {
     {
 	if (Input.GetMouseButtonDown(0) && !isDead)
         {
-            score++;
-            scoreText.text = score.ToString();
+            ScoreScript.score++;
 
             if (dir == Vector3.forward)
             {
@@ -55,8 +53,7 @@ public class PlayerScript : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
             Instantiate(ps, transform.position, Quaternion.identity);
-            score+= 3;
-            scoreText.text = score.ToString();
+            ScoreScript.score += 3;
         }
     }
 
